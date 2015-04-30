@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "dev.chuross.expandablelayout"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

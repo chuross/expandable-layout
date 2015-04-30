@@ -1,4 +1,4 @@
-package dev.chuross.expandablelayout;
+package dev.chuross.expandablelayout.library;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
