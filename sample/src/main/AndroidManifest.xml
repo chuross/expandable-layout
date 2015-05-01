@@ -19,6 +19,7 @@
         <activity android:name=".CollapseTargetIdActivity" />
         <activity android:name=".CollapseTargetAndPaddingActivity" />
         <activity android:name=".CollapseDurationActivity" />
+        <activity android:name=".ListActivity" />
     </application>
 
 </manifest>

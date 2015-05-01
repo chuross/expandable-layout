@@ -14,13 +14,15 @@ public class MainActivity extends ActionBarActivity {
             CollapseHeightActivity.class.getSimpleName() + " (collapseHeight=160dp)",
             CollapseTargetIdActivity.class.getSimpleName() + " (target=2)",
             CollapseTargetAndPaddingActivity.class.getSimpleName() + " (target=2 + padding=100dp)",
-            CollapseDurationActivity.class.getSimpleName() + " (duration=200)"
+            CollapseDurationActivity.class.getSimpleName() + " (duration=200)",
+            ListActivity.class.getSimpleName()
     };
     private static final Class[] CLASSES = new Class[] {
             CollapseHeightActivity.class,
             CollapseTargetIdActivity.class,
             CollapseTargetAndPaddingActivity.class,
-            CollapseDurationActivity.class
+            CollapseDurationActivity.class,
+            ListActivity.class
     };
 
     @Override

@@ -124,20 +124,30 @@ public class ExpandableLayout extends FrameLayout {
     }
 
     public void expand() {
+        expand(true);
+    }
+
+    public void expand(boolean smoothScroll) {
         if(isExpanded() || isMoving()) {
             return;
         }
         status = Status.MOVING;
-        scroller.startScroll(0, getBottom(), 0, measuredHeight - getTotalCollapseHeight(), getDuration());
+        int duration = smoothScroll ? getAnimateDuration() : 0;
+        scroller.startScroll(0, getBottom(), 0, measuredHeight - getTotalCollapseHeight(), duration);
         post(movingRunnable);
     }
 
     public void collapse() {
+        collapse(true);
+    }
+
+    public void collapse(boolean smoothScroll) {
         if(isCollapsed() || isMoving()) {
             return;
         }
         status = Status.MOVING;
-        scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getTotalCollapseHeight()), getDuration());
+        int duration = smoothScroll ? getAnimateDuration() : 0;
+        scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getTotalCollapseHeight()), duration);
         post(movingRunnable);
     }
 

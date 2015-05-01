@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+    <dev.chuross.expandablelayout.library.ExpandableLayout
+        android:id="@+id/layout_expandable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:exl_collapse_height="100dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:background="@android:color/black"
+                android:gravity="center"
+                android:padding="8dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="1"
+                android:background="@android:color/holo_orange_dark"
+                style="@style/Text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:text="2"
+                android:background="@android:color/holo_purple"
+                style="@style/Text" />
+        </LinearLayout>
+    </dev.chuross.expandablelayout.library.ExpandableLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLICK!" />
+</LinearLayout>
