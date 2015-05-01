@@ -32,7 +32,7 @@ public class ExpandableLayout extends FrameLayout {
                 post(this);
                 return;
             }
-            if(scroller.getCurrY() == getCollapseHeight()) {
+            if(scroller.getCurrY() == getTotalCollapseHeight()) {
                 status = Status.COLLAPSED;
                 notifyCollapseEvent();
             } else {
@@ -90,13 +90,13 @@ public class ExpandableLayout extends FrameLayout {
             return;
         }
         if(isCollapsed()) {
-            setMeasuredDimension(measuredWidth, getCollapseHeight());
+            setMeasuredDimension(measuredWidth, getTotalCollapseHeight());
         } else {
             setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
         }
     }
 
-    private int getCollapseHeight() {
+    private int getTotalCollapseHeight() {
         if(collapseHeight > 0) {
             return collapseHeight + collapsePadding;
         }
@@ -107,7 +107,7 @@ public class ExpandableLayout extends FrameLayout {
         return (view.getTop() - getTop()) + collapsePadding;
     }
 
-    private int getDuration() {
+    private int getAnimateDuration() {
         return duration > 0 ? duration : DEFAULT_DURATION;
     }
 
@@ -128,7 +128,7 @@ public class ExpandableLayout extends FrameLayout {
             return;
         }
         status = Status.MOVING;
-        scroller.startScroll(0, getBottom(), 0, measuredHeight - getCollapseHeight(), getDuration());
+        scroller.startScroll(0, getBottom(), 0, measuredHeight - getTotalCollapseHeight(), getDuration());
         post(movingRunnable);
     }
 
@@ -137,7 +137,7 @@ public class ExpandableLayout extends FrameLayout {
             return;
         }
         status = Status.MOVING;
-        scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getCollapseHeight()), getDuration());
+        scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getTotalCollapseHeight()), getDuration());
         post(movingRunnable);
     }
 
@@ -155,6 +155,32 @@ public class ExpandableLayout extends FrameLayout {
 
     public boolean isMoving() {
         return status != null && status.equals(Status.MOVING);
+    }
+
+    public int getCollapseHight() {
+        return collapseHeight;
+    }
+
+    public void setCollapseHeight(int collapseHeight) {
+        this.collapseHeight = collapseHeight;
+        requestLayout();
+    }
+
+    public int getCollapseTargetId() {
+        return collapseTargetId;
+    }
+
+    public void setCollapseTargetId(int collapseTargetId) {
+        this.collapseTargetId = collapseTargetId;
+        requestLayout();
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public void setOnExpandListener(OnExpandListener expandListener) {
