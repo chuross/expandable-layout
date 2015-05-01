@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CollapseHeightActivity" />
+        <activity android:name=".CollapseTargetIdActivity" />
     </application>
 
 </manifest>

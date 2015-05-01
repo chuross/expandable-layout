@@ -12,7 +12,7 @@
             android:id="@+id/layout_expandable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:exl_collapse_height="160dp">
+            app:exl_collapse_target_id="@+id/two">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
