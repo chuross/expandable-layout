@@ -1,10 +1,10 @@
 package dev.chuross.expandablelayout.sample;
 
-public class CollapseTargetAndPaddingActivity extends BaseCollapseActivity {
+public class CollapseDurationActivity extends BaseCollapseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_collapse_target_and_padding;
+        return R.layout.activity_collapse_duration;
     }
 
     @Override
