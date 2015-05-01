@@ -11,12 +11,14 @@ import android.widget.ListView;
 public class MainActivity extends ActionBarActivity {
 
     private static final String[] NAMES = new String[] {
-            CollapseHeightActivity.class.getSimpleName(),
-            CollapseTargetIdActivity.class.getSimpleName() + " (target=2)"
+            CollapseHeightActivity.class.getSimpleName() + " (collapseHeight=160dp)",
+            CollapseTargetIdActivity.class.getSimpleName() + " (target=2)",
+            CollapseTargetAndPaddingActivity.class.getSimpleName() + " (target=2 + padding=40dp)"
     };
     private static final Class[] CLASSES = new Class[] {
             CollapseHeightActivity.class,
-            CollapseTargetIdActivity.class
+            CollapseTargetIdActivity.class,
+            CollapseTargetAndPaddingActivity.class
     };
 
     @Override

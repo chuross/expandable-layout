@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".CollapseHeightActivity" />
         <activity android:name=".CollapseTargetIdActivity" />
+        <activity android:name=".CollapseTargetAndPaddingActivity" />
     </application>
 
 </manifest>
