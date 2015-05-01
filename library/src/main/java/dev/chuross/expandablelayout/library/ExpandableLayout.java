@@ -17,10 +17,12 @@ public class ExpandableLayout extends FrameLayout {
     private static final int DEFAULT_DURATION = 500;
     private int collapseHeight;
     private int collapseTargetId;
+    private int collapsePadding;
     private int duration;
     private int measuredHeight = -1;
     private Scroller scroller;
     private Status status = Status.COLLAPSED;
+    private OnExpandListener expandListener;
     private Runnable movingRunnable = new Runnable() {
         @Override
         public void run() {
@@ -32,8 +34,10 @@ public class ExpandableLayout extends FrameLayout {
             }
             if(scroller.getCurrY() == getCollapseHeight()) {
                 status = Status.COLLAPSED;
+                notifyCollapseEvent();
             } else {
                 status = Status.EXPANDED;
+                notifyExpandEvent();
             }
         }
     };
@@ -67,6 +71,7 @@ public class ExpandableLayout extends FrameLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout, defStyleAttr, defStyleRes);
         collapseHeight = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapse_height, 0);
         collapseTargetId = typedArray.getResourceId(R.styleable.ExpandableLayout_exl_collapse_target_id, 0);
+        collapsePadding = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapse_padding, 0);
         duration = typedArray.getInteger(R.styleable.ExpandableLayout_exl_duration, 0);
         boolean initialExpanded = typedArray.getBoolean(R.styleable.ExpandableLayout_exl_expanded, false);
         status = initialExpanded ? Status.EXPANDED : Status.COLLAPSED;
@@ -93,17 +98,29 @@ public class ExpandableLayout extends FrameLayout {
 
     private int getCollapseHeight() {
         if(collapseHeight > 0) {
-            return collapseHeight;
+            return collapseHeight + collapsePadding;
         }
         View view = findViewById(collapseTargetId);
         if(view == null) {
             return 0;
         }
-        return view.getTop() - getTop();
+        return (view.getTop() - getTop()) + collapsePadding;
     }
 
     private int getDuration() {
         return duration > 0 ? duration : DEFAULT_DURATION;
+    }
+
+    private void notifyExpandEvent() {
+        if(expandListener != null) {
+            expandListener.onExpanded(this);
+        }
+    }
+
+    private void notifyCollapseEvent() {
+        if(expandListener != null) {
+            expandListener.onCollapsed(this);
+        }
     }
 
     public void expand() {
@@ -138,6 +155,10 @@ public class ExpandableLayout extends FrameLayout {
 
     public boolean isMoving() {
         return status != null && status.equals(Status.MOVING);
+    }
+
+    public void setOnExpandListener(OnExpandListener expandListener) {
+        this.expandListener = expandListener;
     }
 
     public enum Status {

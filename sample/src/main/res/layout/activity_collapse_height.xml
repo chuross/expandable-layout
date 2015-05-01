@@ -54,14 +54,14 @@
             android:layout_height="400dp"
             android:layout_below="@+id/button"
             android:background="@android:color/holo_purple"
-            android:text="5"
+            android:text="4"
             style="@style/Text" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_below="@+id/four"
             android:background="@android:color/holo_orange_dark"
-            android:text="6"
+            android:text="5"
             style="@style/Text" />
     </RelativeLayout>
 </ScrollView>
