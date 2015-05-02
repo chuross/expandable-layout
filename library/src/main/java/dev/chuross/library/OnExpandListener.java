@@ -1,4 +1,4 @@
-package dev.chuross.expandablelayout.library;
+package dev.chuross.library;
 
 public interface OnExpandListener {
 

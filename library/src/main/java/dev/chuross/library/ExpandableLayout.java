@@ -1,4 +1,4 @@
-package dev.chuross.expandablelayout.library;
+package dev.chuross.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import dev.chuross.expandablelayout.library.R;
 
 public class ExpandableLayout extends FrameLayout {
 

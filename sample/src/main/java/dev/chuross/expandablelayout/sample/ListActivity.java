@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import dev.chuross.expandablelayout.library.ExpandableLayout;
+import dev.chuross.library.ExpandableLayout;
 
 public class ListActivity extends Activity {
 
