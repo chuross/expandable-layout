@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 21
@@ -14,6 +15,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository url: targetMavenRepositoryDir
+            pom.version = '1.0.0'
+            pom.groupId = 'dev.chuross'
+            pom.artifactId = 'expandablelayout'
         }
     }
 }
