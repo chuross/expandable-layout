@@ -20,6 +20,7 @@
         <activity android:name=".CollapseTargetAndPaddingActivity" />
         <activity android:name=".CollapseDurationActivity" />
         <activity android:name=".ListActivity" />
+        <activity android:name=".ExpandableLayoutCallbackActivity" />
     </application>
 
 </manifest>

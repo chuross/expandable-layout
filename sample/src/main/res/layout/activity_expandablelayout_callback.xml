@@ -1,0 +1,64 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <dev.chuross.expandablelayout.library.ExpandableLayout
+            android:id="@+id/layout_expandable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/one"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@android:color/holo_red_dark"
+                    android:text="1"
+                    style="@style/Text" />
+                <TextView
+                    android:id="@+id/two"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@android:color/holo_orange_light"
+                    android:text="2"
+                    style="@style/Text" />
+                <TextView
+                    android:id="@+id/three"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@android:color/holo_green_dark"
+                    android:text="3"
+                    style="@style/Text" />
+            </LinearLayout>
+        </dev.chuross.expandablelayout.library.ExpandableLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_expandable"
+            android:background="@android:color/white"
+            android:text="click!" />
+        <TextView
+            android:id="@+id/four"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/button"
+            android:background="@android:color/holo_purple"
+            android:text="4"
+            style="@style/Text" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/four"
+            android:background="@android:color/holo_orange_dark"
+            android:text="5"
+            style="@style/Text" />
+    </RelativeLayout>
+</ScrollView>
