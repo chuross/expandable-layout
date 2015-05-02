@@ -9,7 +9,7 @@ public class ExpandableLayoutCallbackActivity extends BaseCollapseActivity {
 
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.activity_expandablelayout_callback;
+        return R.layout.activity_basic_expandablelayout;
     }
 
     @Override

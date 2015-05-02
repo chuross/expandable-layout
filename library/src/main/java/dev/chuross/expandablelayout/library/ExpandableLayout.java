@@ -23,6 +23,7 @@ public class ExpandableLayout extends FrameLayout {
     private Scroller scroller;
     private Status status = Status.COLLAPSED;
     private OnExpandListener expandListener;
+    private Interpolator interpolator;
     private Runnable movingRunnable = new Runnable() {
         @Override
         public void run() {
@@ -64,7 +65,7 @@ public class ExpandableLayout extends FrameLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        scroller = new Scroller(getContext(), DEFAULT_INTERPOLATOR);
+        refreshScroller();
         if(attrs == null) {
             return;
         }
@@ -121,6 +122,11 @@ public class ExpandableLayout extends FrameLayout {
         if(expandListener != null) {
             expandListener.onCollapsed(this);
         }
+    }
+
+    private void refreshScroller() {
+        Interpolator interpolator = this.interpolator != null ? this.interpolator : DEFAULT_INTERPOLATOR;
+        scroller = new Scroller(getContext(), interpolator);
     }
 
     public void expand() {
@@ -199,6 +205,11 @@ public class ExpandableLayout extends FrameLayout {
 
     public void setOnExpandListener(OnExpandListener expandListener) {
         this.expandListener = expandListener;
+    }
+
+    public void setInterpolator(Interpolator interpolator) {
+        this.interpolator = interpolator;
+        refreshScroller();
     }
 
     public enum Status {

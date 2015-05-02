@@ -16,7 +16,8 @@ public class MainActivity extends ActionBarActivity {
             CollapseTargetAndPaddingActivity.class.getSimpleName() + " (target=2 + padding=100dp)",
             CollapseDurationActivity.class.getSimpleName() + " (duration=200)",
             ListActivity.class.getSimpleName(),
-            ExpandableLayoutCallbackActivity.class.getSimpleName()
+            ExpandableLayoutCallbackActivity.class.getSimpleName(),
+            ChangeInterpolatorActivity.class.getSimpleName()
     };
     private static final Class[] CLASSES = new Class[] {
             CollapseHeightActivity.class,
@@ -24,7 +25,8 @@ public class MainActivity extends ActionBarActivity {
             CollapseTargetAndPaddingActivity.class,
             CollapseDurationActivity.class,
             ListActivity.class,
-            ExpandableLayoutCallbackActivity.class
+            ExpandableLayoutCallbackActivity.class,
+            ChangeInterpolatorActivity.class
     };
 
     @Override
