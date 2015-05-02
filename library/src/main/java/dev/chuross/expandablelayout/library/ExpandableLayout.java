@@ -148,7 +148,11 @@ public class ExpandableLayout extends FrameLayout {
         status = Status.MOVING;
         int duration = smoothScroll ? getAnimateDuration() : 0;
         scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getTotalCollapseHeight()), duration);
-        post(movingRunnable);
+        if(smoothScroll) {
+            post(movingRunnable);
+        } else {
+            movingRunnable.run();
+        }
     }
 
     public Status getStatus() {

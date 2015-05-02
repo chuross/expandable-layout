@@ -26,7 +26,7 @@ public class ListActivity extends Activity {
             public View getView(final int position, final View convertView, final ViewGroup parent) {
                 final View view = convertView != null ? convertView : LayoutInflater.from(getContext()).inflate(R.layout.adapter_expandable_layout, parent, false);
 
-                ((TextView) view.findViewById(R.id.txt_position)).setText(String.valueOf(position));
+                ((TextView) view.findViewById(R.id.txt_position)).setText("pos=" + position);
 
                 final ExpandableLayout expandableLayout = (ExpandableLayout) view.findViewById(R.id.layout_expandable);
                 if(expandMap.indexOfKey(position) >= 0 && expandMap.get(position)) {
