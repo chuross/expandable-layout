@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import dev.chuross.library.ExpandableLayout;
+import com.github.chuross.library.ExpandableLayout;
 
 public abstract class BaseCollapseActivity extends Activity {
 

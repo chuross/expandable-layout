@@ -1,4 +1,4 @@
-package dev.chuross.library;
+package com.github.chuross.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -1,4 +1,6 @@
-package dev.chuross.library;
+package com.github.chuross.library;
+
+import com.github.chuross.library.ExpandableLayout;
 
 public interface OnExpandListener {
 

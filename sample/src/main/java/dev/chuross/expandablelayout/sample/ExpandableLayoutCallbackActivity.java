@@ -2,8 +2,8 @@ package dev.chuross.expandablelayout.sample;
 
 import android.os.Bundle;
 import android.widget.Toast;
-import dev.chuross.library.ExpandableLayout;
-import dev.chuross.library.OnExpandListener;
+import com.github.chuross.library.ExpandableLayout;
+import com.github.chuross.library.OnExpandListener;
 
 public class ExpandableLayoutCallbackActivity extends BaseCollapseActivity {
 

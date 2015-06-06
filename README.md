@@ -27,11 +27,11 @@ ExpandableLayout has sample project.
 ## In your layout
 
 ```xml
-<dev.chuross.library.ExpandableLayout
+<com.github.chuross.library.ExpandableLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <!-- any child views -->
-</dev.chuross.library.ExpandableLayout>
+</com.github.chuross.library.ExpandableLayout>
 ```
 
 ## XML Attributes

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical">
-    <dev.chuross.library.ExpandableLayout
+    <com.github.chuross.library.ExpandableLayout
         android:id="@+id/layout_expandable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,7 +37,7 @@
                 android:background="@android:color/holo_purple"
                 style="@style/Text" />
         </LinearLayout>
-    </dev.chuross.library.ExpandableLayout>
+    </com.github.chuross.library.ExpandableLayout>
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

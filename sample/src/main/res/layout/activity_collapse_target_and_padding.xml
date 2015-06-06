@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <dev.chuross.library.ExpandableLayout
+        <com.github.chuross.library.ExpandableLayout
             android:id="@+id/layout_expandable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                     android:text="3"
                     style="@style/Text" />
             </LinearLayout>
-        </dev.chuross.library.ExpandableLayout>
+        </com.github.chuross.library.ExpandableLayout>
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
