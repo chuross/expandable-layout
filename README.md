@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile 'dev.chuross:expandablelayout:1.0.0'
+    compile 'com.github.chuross:expandablelayout:1.0.1'
 }
 ```
 
