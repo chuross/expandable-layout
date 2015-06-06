@@ -22,14 +22,10 @@ android {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository url: targetMavenRepositoryDir
-            pom.version = '1.0.0'
-            pom.groupId = 'dev.chuross'
+            repository url: System.getenv('LOCAL_MAVEN_REPOSITORY_URL')
+            pom.version = '1.0.1'
+            pom.groupId = 'com.github.chuross'
             pom.artifactId = 'expandablelayout'
         }
     }
-}
-
-dependencies {
-    compile 'com.android.support:appcompat-v7:22.0.0'
 }
