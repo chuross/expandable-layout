@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ExpandableLayout">
-        <attr name="exl_collapse_height" format="dimension" />
-        <attr name="exl_collapse_target_id" format="reference" />
-        <attr name="exl_collapse_padding" format="dimension" />
+        <attr name="exl_collapseHeight" format="dimension" />
+        <attr name="exl_collapseTargetId" format="reference" />
+        <attr name="exl_collapsePadding" format="dimension" />
         <attr name="exl_duration" format="integer" />
         <attr name="exl_expanded" format="boolean" />
     </declare-styleable>

@@ -2,6 +2,7 @@ package com.github.chuross.library;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -10,7 +11,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
-import dev.chuross.expandablelayout.library.R;
+import com.github.chuross.expandablelayout.library.R;
 
 public class ExpandableLayout extends FrameLayout {
 
@@ -20,7 +21,8 @@ public class ExpandableLayout extends FrameLayout {
     private int collapseTargetId;
     private int collapsePadding;
     private int duration;
-    private int measuredHeight = -1;
+    private int portraitMeasuredHeight = -1;
+    private int landscapeMeasuredHeight = -1;
     private Scroller scroller;
     private Status status = Status.COLLAPSED;
     private OnExpandListener expandListener;
@@ -71,9 +73,9 @@ public class ExpandableLayout extends FrameLayout {
             return;
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout, defStyleAttr, defStyleRes);
-        collapseHeight = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapse_height, 0);
-        collapseTargetId = typedArray.getResourceId(R.styleable.ExpandableLayout_exl_collapse_target_id, 0);
-        collapsePadding = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapse_padding, 0);
+        collapseHeight = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapseHeight, 0);
+        collapseTargetId = typedArray.getResourceId(R.styleable.ExpandableLayout_exl_collapseTargetId, 0);
+        collapsePadding = typedArray.getDimensionPixelOffset(R.styleable.ExpandableLayout_exl_collapsePadding, 0);
         duration = typedArray.getInteger(R.styleable.ExpandableLayout_exl_duration, 0);
         boolean initialExpanded = typedArray.getBoolean(R.styleable.ExpandableLayout_exl_expanded, false);
         status = initialExpanded ? Status.EXPANDED : Status.COLLAPSED;
@@ -82,20 +84,27 @@ public class ExpandableLayout extends FrameLayout {
 
     @Override
     protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int measuredWidth = getMeasuredWidth();
-        if(measuredHeight < 0) {
-            measuredHeight = getMeasuredHeight();
-        }
+        setExpandedMeasuredHeight(getMaxChildHeight(widthMeasureSpec, heightMeasureSpec));
+
         if(isExpanded()) {
-            setMeasuredDimension(widthMeasureSpec, measuredHeight);
-            return;
-        }
-        if(isCollapsed()) {
-            setMeasuredDimension(measuredWidth, getTotalCollapseHeight());
+            setMeasuredDimension(widthMeasureSpec, getExpandedMeasuredHeight());
+        } else if(isCollapsed()) {
+            setMeasuredDimension(widthMeasureSpec, getTotalCollapseHeight());
         } else {
             setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
         }
+    }
+
+    private int getMaxChildHeight(int widthMeasureSpec, int heightMeasureSpec) {
+        int childWidthSpec = MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.EXACTLY);
+        int childHeightSpec = MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED);
+
+        int max = 0;
+        for(int i = 0; i < getChildCount(); i++) {
+            measureChild(getChildAt(i), childWidthSpec, childHeightSpec);
+            max = Math.max(max, getChildAt(i).getMeasuredHeight());
+        }
+        return max;
     }
 
     private int getTotalCollapseHeight() {
@@ -106,7 +115,33 @@ public class ExpandableLayout extends FrameLayout {
         if(view == null) {
             return 0;
         }
-        return (view.getTop() - getTop()) + collapsePadding;
+        return (getRelativeTop(view) - getTop()) + collapsePadding;
+    }
+
+    private int getRelativeTop(View target) {
+        if(target == null) {
+            return 0;
+        }
+        if(target.getParent().equals(this)) {
+            return target.getTop();
+        }
+        return target.getTop() + getRelativeTop((View) target.getParent());
+    }
+
+    private int getExpandedMeasuredHeight() {
+        return isPortrait() ? portraitMeasuredHeight : landscapeMeasuredHeight;
+    }
+
+    private void setExpandedMeasuredHeight(int measuredHeight) {
+        if(isPortrait()) {
+            portraitMeasuredHeight = measuredHeight;
+        } else {
+            landscapeMeasuredHeight = measuredHeight;
+        }
+    }
+
+    private boolean isPortrait() {
+        return getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
     }
 
     private int getAnimateDuration() {
@@ -140,8 +175,13 @@ public class ExpandableLayout extends FrameLayout {
         }
         status = Status.MOVING;
         int duration = smoothScroll ? getAnimateDuration() : 0;
-        scroller.startScroll(0, getBottom(), 0, measuredHeight - getTotalCollapseHeight(), duration);
-        post(movingRunnable);
+        int collapseHeight = getTotalCollapseHeight();
+        scroller.startScroll(0, collapseHeight, 0, getExpandedMeasuredHeight() - collapseHeight, duration);
+        if(smoothScroll) {
+            post(movingRunnable);
+        } else {
+            movingRunnable.run();
+        }
     }
 
     public void collapse() {
@@ -154,7 +194,8 @@ public class ExpandableLayout extends FrameLayout {
         }
         status = Status.MOVING;
         int duration = smoothScroll ? getAnimateDuration() : 0;
-        scroller.startScroll(0, measuredHeight, 0, -(measuredHeight - getTotalCollapseHeight()), duration);
+        int expandedMeasuredHeight = getExpandedMeasuredHeight();
+        scroller.startScroll(0, expandedMeasuredHeight, 0, -(expandedMeasuredHeight - getTotalCollapseHeight()), duration);
         if(smoothScroll) {
             post(movingRunnable);
         } else {
