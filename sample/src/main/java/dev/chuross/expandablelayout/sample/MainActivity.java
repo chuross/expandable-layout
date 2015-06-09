@@ -1,8 +1,8 @@
 package dev.chuross.expandablelayout.sample;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,7 +17,8 @@ public class MainActivity extends ActionBarActivity {
             CollapseDurationActivity.class.getSimpleName() + " (duration=200)",
             ListActivity.class.getSimpleName(),
             ExpandableLayoutCallbackActivity.class.getSimpleName(),
-            ChangeInterpolatorActivity.class.getSimpleName()
+            ChangeInterpolatorActivity.class.getSimpleName(),
+            ConfigurationChangeActivity.class.getSimpleName()
     };
     private static final Class[] CLASSES = new Class[] {
             CollapseHeightActivity.class,
@@ -26,7 +27,8 @@ public class MainActivity extends ActionBarActivity {
             CollapseDurationActivity.class,
             ListActivity.class,
             ExpandableLayoutCallbackActivity.class,
-            ChangeInterpolatorActivity.class
+            ChangeInterpolatorActivity.class,
+            ConfigurationChangeActivity.class
     };
 
     @Override

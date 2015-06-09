@@ -22,6 +22,9 @@
         <activity android:name=".ListActivity" />
         <activity android:name=".ExpandableLayoutCallbackActivity" />
         <activity android:name=".ChangeInterpolatorActivity" />
+        <activity
+            android:name=".ConfigurationChangeActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
