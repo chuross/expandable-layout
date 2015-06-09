@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.chuross:expandablelayout:1.0.1'
+    compile 'com.github.chuross:expandablelayout:1.0.2'
 }
 ```
 
@@ -38,9 +38,9 @@ ExpandableLayout has sample project.
 
 |name|type|description|etc|
 |:---|:---|:---|:---|
-|exl_collapse_height|dimention|The height of View when ExpandableLayout is collapse|exl_collapse_heighta and exl_collapse_target_id can not be mixed|
-|exl_collapse_target_id|reference|To automatically calculate the height to collapse from child view id||
-|exl_collapse_padding|dimention|||
+|exl_collapseHeight|dimention|The height of View when ExpandableLayout is collapse|exl_collapse_heighta and exl_collapseTargetId can not be mixed|
+|exl_collapseTargetId|reference|To automatically calculate the height to collapse from child view id||
+|exl_collapsePadding|dimention|||
 |exl_duration|integer|duration for animate||
 |exl_expanded|boolean|If true, ExpandableLayout expand when view is created.|default false|
 
