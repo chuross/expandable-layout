@@ -84,7 +84,9 @@ public class ExpandableLayout extends FrameLayout {
 
     @Override
     protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
-        setExpandedMeasuredHeight(getMaxChildHeight(widthMeasureSpec, heightMeasureSpec));
+        if(!isMoving()) {
+            setExpandedMeasuredHeight(getMaxChildHeight(widthMeasureSpec));
+        }
 
         if(isExpanded()) {
             setMeasuredDimension(widthMeasureSpec, getExpandedMeasuredHeight());
@@ -95,14 +97,12 @@ public class ExpandableLayout extends FrameLayout {
         }
     }
 
-    private int getMaxChildHeight(int widthMeasureSpec, int heightMeasureSpec) {
-        int childWidthSpec = MeasureSpec.makeMeasureSpec(widthMeasureSpec, MeasureSpec.EXACTLY);
-        int childHeightSpec = MeasureSpec.makeMeasureSpec(heightMeasureSpec, MeasureSpec.UNSPECIFIED);
-
+    private int getMaxChildHeight(int widthMeasureSpec) {
         int max = 0;
         for(int i = 0; i < getChildCount(); i++) {
-            measureChild(getChildAt(i), childWidthSpec, childHeightSpec);
-            max = Math.max(max, getChildAt(i).getMeasuredHeight());
+            final View child = getChildAt(i);
+            measureChild(child, widthMeasureSpec, MeasureSpec.UNSPECIFIED);
+            max = Math.max(max, child.getMeasuredHeight());
         }
         return max;
     }
