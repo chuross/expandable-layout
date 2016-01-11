@@ -55,10 +55,10 @@ protected void onCreate(Bundle savedInstanceState) {
     ExpandableLayout expandableLayout = (ExpandableLayout)findViewById(R.id.layout_expandable);
 
     expandableLayout.expand();// expand with animation
-    expandableLayout.collapse();// expand with animation
+    expandableLayout.collapse();// collapse with animation
 
-    expandableLayout.expand(false);// immediate expand
-    expandableLayout.collapse(false);// immediate collapse
+    expandableLayout.expand(false);// expand without animation
+    expandableLayout.collapse(false);// collapse without animation
 }
 ```
 
