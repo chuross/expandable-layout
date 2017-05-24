@@ -1,22 +1,24 @@
+[![](https://jitpack.io/v/chuross/expandable-layout.svg)](https://jitpack.io/#chuross/expandable-layout)
+
 # ExpandableLayout
 
 ExpandableLayout can expand / collapse child views.
 
-![](http://i.imgur.com/nY4tA5t.gif)
+![](https://cloud.githubusercontent.com/assets/1422031/26396914/9381d0be-40af-11e7-9434-7a7aaff1adee.gif)
 
 [demo](https://www.youtube.com/watch?v=e7WaAzMRvzA)
 
 # Gradle
 
+[![](https://jitpack.io/v/chuross/expandable-layout.svg)](https://jitpack.io/#chuross/expandable-layout)
+
 ```
 repositories {
-    maven {
-        url 'http://chuross.github.com/maven-repository/'
-    }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    compile 'com.github.chuross:expandablelayout:1.0.3'
+    compile 'com.github.chuross:expandable-layout:x.x.x'
 }
 ```
 
@@ -65,7 +67,7 @@ protected void onCreate(Bundle savedInstanceState) {
 # License
 
 ```
-Copyright 2015 chuross
+Copyright 2017 chuross
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
