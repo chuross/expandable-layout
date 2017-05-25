@@ -184,6 +184,18 @@ public class ExpandableLayout extends FrameLayout {
         }
     }
 
+    public void toggle() {
+        toggle(true);
+    }
+
+    public void toggle(boolean smoothScroll) {
+        if (isExpanded()) {
+            collapse(smoothScroll);
+        } else {
+            expand(smoothScroll);
+        }
+    }
+
     public void collapse() {
         collapse(true);
     }
